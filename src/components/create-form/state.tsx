@@ -1,70 +1,28 @@
-interface Action {
-  value: any,
-  type: String
-}
 interface State {
-  isLoading: boolean,
-  hosts: Array<{ key: String, host?: String, weight?: String }>,
-  elements: Array<Object>,
-  elementCount: number
+    isLoading: boolean,
+    formElement: Array<Object>
+    hostData: Object
 }
-
-/**
- * For useReducer hook
- */
+interface Type {
+    value ?: any,
+    action: String
+}
 const initialState = {
   isLoading: false,
-  hosts: [],
-  elements: [],
-  elementCount: 1,
+  formElement: [{ id: 0 }],
+  hostData: {},
 };
 
-/**
- * For useReducer hook
- */
-const reducer = (state: State, action: Action) => {
-  const { value, type } = action;
-  switch (type) {
-    case 'add_new_host_component': {
-      const { elements, elementCount } = state;
-      const { component = null } = value;
-      return { ...state, elements: [...elements, component], elementCount: elementCount + 1 };
+const reducer = (state: State, type: Type) => {
+  const { value, action } = type;
+  switch (action) {
+    case 'add_new_host': {
+      const { formElement } = state;
+      return { ...state, formElement: [...formElement, { id: formElement.length }] };
     }
-    case 'add_host': {
-      const { key, keyValue } = value;
-      const { hosts } = state;
-      const flag = hosts.find((host) => host.key === key) === undefined;
-      const newHost = flag
-        ? [...hosts, { key, host: keyValue }]
-        : hosts.map((prev) => {
-          if (prev.key === key) {
-            return {
-              key,
-              host: keyValue,
-              weight: prev.weight,
-            };
-          }
-          return prev;
-        });
-      return { ...state, hosts: newHost };
-    }
-    case 'add_weight': {
-      const { key, keyValue } = value;
-      const { hosts } = state;
-      const flag = hosts.find((host) => host.key === key) === undefined;
-      const newHost = flag
-        ? [...hosts, { key, weight: keyValue }]
-        : hosts.map((prev) => {
-          if (prev.key === key) {
-            return {
-              key,
-              host: prev.host,
-              weight: keyValue,
-            };
-          }
-          return prev;
-        });
-      return { ...state, hosts: newHost };
+    case 'change_form_data': {
+      const { hostData } = state;
+      return { ...state, hostData: { ...hostData, ...value } };
     }
     default:
       return state;
@@ -72,6 +30,5 @@ const reducer = (state: State, action: Action) => {
 };
 
 export {
-  initialState,
-  reducer,
+  initialState, reducer,
 };

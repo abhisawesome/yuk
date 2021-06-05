@@ -1,72 +1,33 @@
 import { useReducer } from 'react';
 import { initialState, reducer } from './state';
-import FormElement from './FormElement';
+import GenerateElement from './GenerateElemet';
 
-const Create = () => {
+const CreateForm = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { hosts, elements = [], elementCount } = state;
-  // handle hostname onchange
-  const hostNameOnChangeHandler = (event: any) => {
-    dispatch({
-      type: 'add_host',
-      value: {
-        key: event.target.id,
-        keyValue: event.target.value,
-      },
-    });
+  const { formElement, hostData } = state;
+  // Add new form element
+  const addNewHost = () => {
+    dispatch({ action: 'add_new_host' });
   };
-
-  // handle weight onChange
-  const weightOnChangeHandler = (event: any) => {
-    dispatch({
-      type: 'add_weight',
-      value: {
-        key: event.target.id,
-        keyValue: event.target.value,
-      },
-    });
+  // change form element data
+  const onChangeFormElementData = (value) => {
+    dispatch({ action: 'change_form_data', value });
   };
-  // handle balance type
-  const typeOnChangeHandler = (event:any) => {
-
-  };
-  // To create a new form element
-  const addHostElement = () => {
-    dispatch({
-      type: 'add_new_host_component',
-      value: {
-        component: (<FormElement
-          id={`${elementCount}`}
-          onHandleChangeHostName={hostNameOnChangeHandler}
-          onHandleChangeWeight={weightOnChangeHandler}
-        />),
-      },
-    });
-  };
-
-  return (
-    <div>
-      <form>
-        <FormElement
-          id="0"
-          onHandleChangeHostName={hostNameOnChangeHandler}
-          onHandleChangeWeight={weightOnChangeHandler}
-        />
-        {elements}
-        <p>
-          <button type="button" onClick={addHostElement}>Add host</button>
-        </p>
-        <p>
-          <button type="submit">Create</button>
-        </p>
-      </form>
-      <div>
-        <p>
-          Host list : {JSON.stringify(hosts)}
-        </p>
-      </div>
-    </div>
-  );
+  return (<div>
+        <form>
+            <GenerateElement value={formElement} onChange={(value:any) => {
+              onChangeFormElementData(value);
+            }}/>
+           <p>
+           <button type="button" onClick={() => { addNewHost(); }}>Add new host</button>
+           </p>
+        </form>
+        <div>
+            <p>
+                Host data: {JSON.stringify(hostData)}
+            </p>
+        </div>
+    </div>);
 };
 
-export default Create;
+export default CreateForm;
