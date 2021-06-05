@@ -4,13 +4,13 @@ import GenerateElement from './GenerateElemet';
 
 const CreateForm = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { formElement, hostData } = state;
+  const { formElement=[], hostData } = state;
   // Add new form element
   const addNewHost = () => {
     dispatch({ action: 'add_new_host' });
   };
   // change form element data
-  const onChangeFormElementData = (value) => {
+  const onChangeFormElementData = (value:any) => {
     dispatch({ action: 'change_form_data', value });
   };
   return (<div>

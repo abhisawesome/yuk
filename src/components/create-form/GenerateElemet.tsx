@@ -1,12 +1,14 @@
 import From from './Form';
 
 interface Props {
-    value :Array<{id:number}>,
-    onChange: Function
+  value: Array<any>,
+  onChange: Function
 }
 // eslint-disable-next-line arrow-body-style
-const GenerateElement = ({ value, onChange }:Props) => {
-  return value.map((item) => <From id={item.id} onChange={onChange} />);
+const GenerateElement = ({ value, onChange }: Props) => {
+  return (<div>
+    {value.map((item) => <From id={item.id} onChange={onChange} />)}
+  </div>);
 };
 
 export default GenerateElement;
