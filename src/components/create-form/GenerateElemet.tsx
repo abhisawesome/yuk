@@ -6,9 +6,7 @@ interface Props {
 }
 // eslint-disable-next-line arrow-body-style
 const GenerateElement = ({ value, onChange }: Props) => {
-  return (<div>
-    {value.map((item) => <From id={item.id} onChange={onChange} />)}
-  </div>);
+  return value.map((item) => <From id={item.id} onChange={onChange} />);
 };
 
 export default GenerateElement;

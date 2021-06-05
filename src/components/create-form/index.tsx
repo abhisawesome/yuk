@@ -4,7 +4,7 @@ import GenerateElement from './GenerateElemet';
 
 const CreateForm = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { formElement=[], hostData } = state;
+  const { formElement = [], hostData } = state;
   // Add new form element
   const addNewHost = () => {
     dispatch({ action: 'add_new_host' });
@@ -15,9 +15,7 @@ const CreateForm = () => {
   };
   return (<div>
         <form>
-            <GenerateElement value={formElement} onChange={(value:any) => {
-              onChangeFormElementData(value);
-            }}/>
+            {GenerateElement({ value: formElement, onChange: onChangeFormElementData })}
            <p>
            <button type="button" onClick={() => { addNewHost(); }}>Add new host</button>
            </p>
