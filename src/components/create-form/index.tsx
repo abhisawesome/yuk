@@ -26,7 +26,11 @@ const Create = () => {
       },
     });
   };
+  // handle balance type
+  const typeOnChangeHandler = (event:any) => {
 
+  };
+  // To create a new form element
   const addHostElement = () => {
     dispatch({
       type: 'add_new_host_component',

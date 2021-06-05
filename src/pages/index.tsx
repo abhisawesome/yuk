@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Create from '../components/create/index';
+import Create from '../components/create-form';
 
 export default function Home() {
   return (
