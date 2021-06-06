@@ -1,7 +1,8 @@
 interface State {
   isLoading: boolean,
   formElement: Array<Object>
-  hostData: Object
+  hostData: Object,
+  message: String
 }
 interface Type {
   value?: any,
@@ -11,6 +12,7 @@ const initialState = {
   isLoading: false,
   formElement: [{ id: 0 }],
   hostData: {},
+  message: ''
 };
 
 const reducer = (state: State, type: Type) => {
@@ -26,6 +28,9 @@ const reducer = (state: State, type: Type) => {
     }
     case 'set_loading': {
       return { ...state, isLoading: value }
+    }
+    case 'set_message': {
+      return { ...state, message: value, isLoading: false }
     }
     default:
       return state;

@@ -5,7 +5,7 @@ import Loading from '../Loading';
 
 const CreateForm = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { formElement = [], hostData, isLoading } = state;
+  const { formElement = [], hostData, isLoading, message } = state;
   // Add new form element
   const addNewHost = () => {
     dispatch({ action: 'add_new_host' });
@@ -28,10 +28,13 @@ const CreateForm = () => {
           },
           body: JSON.stringify({ hostData: Object.values(hostData) })
         });
+      const respJson = await response.json();
+      if (respJson.status) {
+        dispatch({ action: 'set_message', value: 'Config file created. Restart the nginx container' })
+      }
     } catch (error) {
-
+      dispatch({ action: 'set_message', value: 'Something went wrong' })
     }
-    dispatch({ action: 'set_loading', value: false })
   };
   if (isLoading) {
     return (<Loading />)
@@ -52,7 +55,7 @@ const CreateForm = () => {
           Host data: {JSON.stringify(hostData)}
         </p>
         <p>
-
+         Message: {JSON.stringify(message)}
         </p>
       </div>
     </div>
