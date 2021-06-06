@@ -19,7 +19,7 @@ class NginxLoadBalancer {
     }
     // create config file
     async makeConfig(config: String, location?: String | '.') {
-        await fs.writeFile(`${location}/config/nginx.conf`, config)
+        await fs.outputFileSync(`${location}/config/nginx.conf`, config)
     }
 }
 
