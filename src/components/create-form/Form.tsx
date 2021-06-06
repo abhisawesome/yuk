@@ -21,7 +21,6 @@ const Form = ({ id, onChange = () => { } }: Props) => {
             </select>
             <input required type="input" value={value.host} onChange={handleChanges} id="host" placeholder="Enter hostname" />
             <input required type="number" value={value.weight} id="weight" onChange={handleChanges} placeholder="Enter weight" />
-
         </div>
   );
 };
