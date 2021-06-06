@@ -1,11 +1,11 @@
 interface State {
-    isLoading: boolean,
-    formElement: Array<Object>
-    hostData: Object
+  isLoading: boolean,
+  formElement: Array<Object>
+  hostData: Object
 }
 interface Type {
-    value ?: any,
-    action: String
+  value?: any,
+  action: String
 }
 const initialState = {
   isLoading: false,
@@ -23,6 +23,9 @@ const reducer = (state: State, type: Type) => {
     case 'change_form_data': {
       const { hostData } = state;
       return { ...state, hostData: { ...hostData, ...value } };
+    }
+    case 'set_loading': {
+      return { ...state, isLoading: value }
     }
     default:
       return state;
