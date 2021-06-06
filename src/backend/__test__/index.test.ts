@@ -1,5 +1,11 @@
+import { configure } from '../index';
+
 describe('Test', () => {
-  test('Ideal', () => {
-    expect(1).toBe(1);
+  test('Ideal', async () => {
+    const sampleData = [{ host: "backend.test.com", weight: "1", type: "https" }];
+    const response = await configure({hostData:sampleData});
+    expect(response.includes('server backend.test.com weight=1;')).toBe(true);
+    expect(response.includes('listen 8080')).toBe(true);
+    expect(response.includes('proxy_pass http://yuk/'));
   });
 });

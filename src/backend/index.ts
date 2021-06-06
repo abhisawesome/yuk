@@ -12,7 +12,7 @@ interface Input {
 const configure = async({ hostData }: Input) => {
     try {
         const loadBalancer = new NginxLoad(hostData);
-        await loadBalancer.createConfig();
+        return loadBalancer.createConfig();
     } catch (error) {
         console.log(error);
         return Promise.reject(error);
