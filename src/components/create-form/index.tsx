@@ -13,9 +13,18 @@ const CreateForm = () => {
   const onChangeFormElementData = (value: any) => {
     dispatch({ action: 'change_form_data', value });
   };
-  const formSubmit = (event: any) => {
+  const formSubmit = async (event: any) => {
     event.preventDefault();
-    console.log(hostData);
+    const response = await fetch(
+      '/api/configure',
+      {
+        method: 'POST',
+        headers:{
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({hostData: Object.values(hostData)})
+      },);
   };
   return (
     <div>
