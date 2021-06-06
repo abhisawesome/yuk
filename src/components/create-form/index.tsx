@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
 import { initialState, reducer } from './state';
-import GenerateElement from './GenerateElemet';
+import GenerateElement from './GenerateElement';
 
 const CreateForm = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
