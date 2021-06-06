@@ -1,5 +1,5 @@
+import fs from 'fs-extra';
 import config from './create-config';
-
 interface HostData {
     host: String,
     weight: String,
@@ -8,13 +8,16 @@ interface HostData {
 class NginxLoadBalancer {
     data !: Array<HostData>
     upstreamName = 'yuk'
-    port =8080
-    constructor(args:Array<HostData>){
+    port = 8080
+    constructor(args: Array<HostData>) {
         this.data = args;
     }
-
-    async createConfig(){
-        return config(this.data,this.upstreamName,this.port)
+    // Create config
+    async createConfig() {
+        return config(this.data, this.upstreamName, this.port)
+    }
+    async makeConfig(config: String, location?: String | '.') {
+        await fs.writeFile(`${location}/config/nginx.conf`, config)
     }
 }
 
