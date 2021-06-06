@@ -6,6 +6,7 @@ interface HostData {
     type: String
 }
 class NginxLoadBalancer {
+
     data !: Array<HostData>
     upstreamName = 'yuk'
     port = 8080
@@ -16,6 +17,7 @@ class NginxLoadBalancer {
     async createConfig() {
         return config(this.data, this.upstreamName, this.port)
     }
+    // create config file
     async makeConfig(config: String, location?: String | '.') {
         await fs.writeFile(`${location}/config/nginx.conf`, config)
     }

@@ -7,9 +7,7 @@ export default function Home() {
       <Head>
         <title>Load Balancer</title>
         <meta name="description" content="Configure load balancer easily" />
-
       </Head>
-
       <main >
         <Create />
       </main>
