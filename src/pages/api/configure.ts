@@ -1,5 +1,5 @@
 import { configure } from '../../backend'
-export default async (req, res) => {
+export default async (req:any, res:any) => {
     const { hostData } = req.body
     console.log(hostData);
     const response = await configure({ hostData: hostData },'.');
