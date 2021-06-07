@@ -1,10 +1,11 @@
 import { useReducer } from 'react';
 import { initialState, reducer } from './state';
 import GenerateElement from './GenerateElement';
+import Loading from '../Loading';
 
 const CreateForm = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { formElement = [], hostData } = state;
+  const { formElement = [], hostData, isLoading, message } = state;
   // Add new form element
   const addNewHost = () => {
     dispatch({ action: 'add_new_host' });
@@ -14,18 +15,30 @@ const CreateForm = () => {
     dispatch({ action: 'change_form_data', value });
   };
   const formSubmit = async (event: any) => {
+    dispatch({ action: 'set_loading', value: true })
     event.preventDefault();
-    const response = await fetch(
-      '/api/configure',
-      {
-        method: 'POST',
-        headers:{
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({hostData: Object.values(hostData)})
-      },);
+    try {
+      const response = await fetch(
+        '/api/configure',
+        {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ hostData: Object.values(hostData) })
+        });
+      const respJson = await response.json();
+      if (respJson.status) {
+        dispatch({ action: 'set_message', value: 'Config file created. Restart the nginx container' })
+      }
+    } catch (error) {
+      dispatch({ action: 'set_message', value: 'Something went wrong' })
+    }
   };
+  if (isLoading) {
+    return (<Loading />)
+  }
   return (
     <div>
       <form>
@@ -40,6 +53,9 @@ const CreateForm = () => {
       <div>
         <p>
           Host data: {JSON.stringify(hostData)}
+        </p>
+        <p>
+         Message: {JSON.stringify(message)}
         </p>
       </div>
     </div>
