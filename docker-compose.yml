@@ -5,15 +5,19 @@ services:
         build: .
         volumes: 
             - ./config:/app/config
+            - ./nginx:/etc/nginx
+        restart: always
         ports: 
             - '3000:3000'
     nginx:
         container_name: 'nginx_load'
         image: nginx:latest
         volumes: 
+            - ./nginx:/etc/nginx
             - ./config/nginx.conf:/etc/nginx/nginx.conf
         depends_on: 
             - node
+        restart: always
         ports: 
             - 80:80
             - 8080:8080

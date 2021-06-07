@@ -1,4 +1,9 @@
-FROM node:alpine
+FROM node:latest
+# Install nginx
+RUN apt update
+RUN apt install nginx -y
+RUN service nginx start
+RUN service nginx status
 WORKDIR /app
 COPY package.json .
 RUN npm i
