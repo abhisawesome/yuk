@@ -10,4 +10,9 @@ Yuk is took to create reverse proxy servers and also to configure load balancing
  - SSL termination.
  - Security and anonymity.
 
+### To run
 
+1. Clone the respository
+2. Run the command ```docker-compose up -d```
+3. Open localhost:3000
+ 
