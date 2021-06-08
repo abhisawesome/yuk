@@ -1,4 +1,5 @@
-import NginxLoad from './nginx-load-balancer/index';
+import NginxLoad from './nginx-load-balancer';
+import { checkStatus } from './load-balancer-status';
 
 interface HostData {
     host: String,
@@ -22,4 +23,5 @@ const configure = async ({ hostData }: Input, location: String) => {
 }
 
 
-export { configure }
+
+export { configure, checkStatus }
