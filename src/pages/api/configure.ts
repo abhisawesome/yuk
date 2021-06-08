@@ -1,8 +1,10 @@
+import { Request, Response } from "express"
 import { configure } from '../../backend'
-export default async (req:any, res:any) => {
+
+export default async (req: Request, res: Response) => {
     const { hostData } = req.body
-    console.log(hostData);
-    const response = await configure({ hostData: hostData },'.');
-    console.log(response)
-    return res.status(200).send({ status: true });
+    const response = await configure({ hostData: hostData }, '.');
+    return res
+        .status(200)
+        .send({ status: true });
 }
