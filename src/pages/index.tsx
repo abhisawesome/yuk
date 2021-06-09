@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Create from '../components/Form';
 
-export default function Home() {
+const Home = () => {
   return (
     <div>
       <Head>
@@ -14,3 +14,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home
