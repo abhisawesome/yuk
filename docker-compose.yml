@@ -1,7 +1,7 @@
 version: '3.9'
 services: 
     node:
-        container_name: 'load_balancer'
+        container_name: 'proxy'
         build: .
         volumes: 
             - ./nginx:/etc/nginx
