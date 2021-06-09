@@ -10,21 +10,21 @@ const Status = () => {
             const response = await fetch('/api/status');
             const respJson = await response.json();
             if (respJson.status) {
-                setStatusMessage('Success :' + respJson.message)
+                setStatusMessage('Success :' + respJson.message);
             } else {
-                setStatusMessage('Error :' + respJson.message)
+                setStatusMessage('Error :' + respJson.message);
             }
             // setStatusMessage(respJson.message)
         } catch (error) {
-            setStatusMessage(error.message || "Something went wrong")
+            setStatusMessage(error.message || "Something went wrong");
         }
-        setLoading(false)
+        setLoading(false);
     }
     useEffect(() => {
         if (process.env.NODE_ENV === 'development') {
             setStatusMessage('Development mode');
         } else {
-            fetchData()
+            fetchData();
         }
     }, [])
     if (isLoading) {
