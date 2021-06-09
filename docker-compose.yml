@@ -4,7 +4,7 @@ services:
         container_name: 'load_balancer'
         build: .
         volumes: 
-            - ./config:/app/config
+            # - ./config:/app/config
             - ./nginx:/etc/nginx
         restart: always
         ports: 
@@ -14,7 +14,7 @@ services:
         image: nginx:latest
         volumes: 
             - ./nginx:/etc/nginx
-            - ./config/nginx.conf:/etc/nginx/nginx.conf
+            # - ./config/nginx.conf:/etc/nginx/nginx.conf
         depends_on: 
             - node
         restart: always

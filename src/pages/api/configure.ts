@@ -3,7 +3,7 @@ import { configure } from '../../backend'
 
 export default async (req: Request, res: Response) => {
     const { hostData } = req.body
-    const response = await configure({ hostData: hostData }, '.');
+    const response = await configure({ hostData: hostData }, '/etc/nginx/');
     return res
         .status(200)
         .send({ status: true });
