@@ -1,5 +1,5 @@
-import NginxLoad from './nginx-load-balancer';
-import { checkStatus } from './load-balancer-status';
+import NginxLoad from './proxy-configure';
+import { checkStatus, restartLoad } from './proxy-service';
 
 interface HostData {
     host: String,
@@ -15,7 +15,7 @@ const configure = async ({ hostData }: Input, location: String) => {
         const loadBalancer = new NginxLoad(hostData);
         const config = await loadBalancer.createConfig();
         await loadBalancer.makeConfig(config, location);
-        return Promise.resolve({ status: true, message: 'Config file created' })
+        return Promise.resolve({ status: true, message: 'Config file created' });
     } catch (error) {
         console.log(error);
         return Promise.reject(error);
@@ -24,4 +24,4 @@ const configure = async ({ hostData }: Input, location: String) => {
 
 
 
-export { configure, checkStatus }
+export { configure, checkStatus, restartLoad }

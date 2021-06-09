@@ -3,7 +3,7 @@ FROM node:latest
 RUN apt update
 RUN apt install nginx -y
 RUN service nginx start
-RUN service nginx status
+# RUN service nginx status
 WORKDIR /app
 COPY package.json .
 RUN npm i
