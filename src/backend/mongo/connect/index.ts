@@ -24,5 +24,8 @@ class Mongo {
             })
         })
     }
+    closeConnection() {
+        this.connect.close();
+    }
 }
 export default Mongo;

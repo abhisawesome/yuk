@@ -1,19 +1,38 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import * as  styles from './styles.module.css';
 
 const Login = () => {
     const [isLoading, setLoading] = useState(false);
     const [data, setData] = useState({});
-    const [password, setPassword] = useState(undefined);
+    const router = useRouter()
 
     // handle form value change
     const onChangeInputHandler = (event: any) => {
         setData({ ...data, [event.target.id]: event.target.value })
     }
     // handle submit
-    const onSubmitHandler = (event: any) => {
+    const onSubmitHandler = async (event: any) => {
+        setLoading(true);
         event.preventDefault();
-        console.log(data);
+        try {
+            const response = await fetch('/api/auth', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            const respJson = await response.json();
+            console.log(respJson);
+            if (respJson.status) {
+                router.push('/status')
+            }
+        } catch (error) {
+            console.error(error);
+        }
+        setLoading(false);
     }
 
     return (
@@ -25,6 +44,7 @@ const Login = () => {
                 <form >
                     <label>Email</label>
                     <input
+                        disabled={isLoading}
                         required
                         className={styles.input}
                         type="email"
@@ -34,6 +54,7 @@ const Login = () => {
                     />
                     <label>Password</label>
                     <input
+                        disabled={isLoading}
                         required
                         className={styles.input}
                         type="password"
@@ -42,12 +63,13 @@ const Login = () => {
                         onChange={onChangeInputHandler}
                     />
                     <button
+                        disabled={isLoading}
                         className={styles.submit}
                         type="submit"
                         onClick={onSubmitHandler}
                     >
-                        Login
-                     </button>
+                        {isLoading ? 'Loading ...' : 'Login'}
+                    </button>
                 </form>
             </div>
         </div>
