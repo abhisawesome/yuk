@@ -10,7 +10,9 @@
     "test": "jest"
   },
   "dependencies": {
+    "dotenv": "^10.0.0",
     "fs-extra": "^10.0.0",
+    "mongoose": "^5.12.13",
     "next": "10.2.3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
