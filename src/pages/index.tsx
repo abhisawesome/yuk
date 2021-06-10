@@ -1,15 +1,15 @@
 import Head from 'next/head';
-import Create from '../components/Form';
+import Root from '../components/Root';
 
 const Home = () => {
   return (
     <div>
       <Head>
         <title>Load Balancer</title>
-        <meta name="description" content="Configure load balancer easily" />
+        <meta name="description" content="Configure reverse proxy easily" />
       </Head>
       <main >
-        <Create />
+          <Root />
       </main>
     </div>
   );
