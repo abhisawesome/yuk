@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:buster-slim
 # Install nginx
 RUN apt update && apt install nginx -y
 # Frontend
