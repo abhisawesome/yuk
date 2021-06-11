@@ -7,6 +7,11 @@ interface Params {
 }
 const login = async (params: Params) => {
     try {
+        const defaultUser = process.env.DEFAULT_USER;
+        const defaultPassword = process.env.DEFAULT_PASSWORD;
+        if(defaultUser === params.email && defaultPassword === params.password){
+            return Promise.resolve({email:params.email})
+        }
         const mongo = new Mongo();
         const db = await mongo.connectDb();
         const collection = db.collection('yuk_users');
