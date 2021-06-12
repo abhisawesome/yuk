@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import styles from './styles.module.css';
+import NavBar from '@/components/Navbar';
 
 export default () => {
     const router = useRouter()
@@ -10,11 +10,8 @@ export default () => {
         }
     }, [])
     return (
-        <div>
-            <ul className={styles.ul}>
-                <li className={styles.li}><a className="active" href="#home">Home</a></li>
-                <li className={styles.li}><a href="#home">Status</a></li>
-            </ul>
-        </div>
+      <div>
+           <NavBar />
+      </div>
     )
 }
