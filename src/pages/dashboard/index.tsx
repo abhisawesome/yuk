@@ -13,6 +13,7 @@ export default () => {
         <div>
             <ul className={styles.ul}>
                 <li className={styles.li}><a className="active" href="#home">Home</a></li>
+                <li className={styles.li}><a href="#home">Status</a></li>
             </ul>
         </div>
     )
