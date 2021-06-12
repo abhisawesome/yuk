@@ -25,9 +25,9 @@ const Login = () => {
                 body: JSON.stringify(data)
             })
             const respJson = await response.json();
-            console.log(respJson);
-            if (respJson.status) {
-                router.push('/status')
+            if (respJson.status && respJson.token) {
+                localStorage.setItem('token', respJson.token);
+                router.push('/dashboard');
             }
         } catch (error) {
             console.error(error);

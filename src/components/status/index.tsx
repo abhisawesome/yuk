@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import Loading from '../Loading';
 
-const Status = () => {
+const Status = (props:any) => {
+    console.log(props);
     const [isLoading, setLoading] = useState(false);
     const [statusMessage, setStatusMessage] = useState("");
     const fetchData = async () => {
@@ -21,6 +22,7 @@ const Status = () => {
         setLoading(false);
     }
     useEffect(() => {
+        console.log(localStorage.getItem('token'));
         if (process.env.NODE_ENV === 'development') {
             setStatusMessage('Development mode');
         } else {
