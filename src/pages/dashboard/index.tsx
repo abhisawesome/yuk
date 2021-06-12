@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import styles from './styles.module.css';
 
 export default () => {
     const router = useRouter()
@@ -8,5 +9,11 @@ export default () => {
             router.push('/');
         }
     }, [])
-    return <div>This is from dashboard</div>
+    return (
+        <div>
+            <ul className={styles.ul}>
+                <li className={styles.li}><a className="active" href="#home">Home</a></li>
+            </ul>
+        </div>
+    )
 }
