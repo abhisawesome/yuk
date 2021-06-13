@@ -1,6 +1,7 @@
 # yuk
 
 Yuk is a open source tool to create reverse proxy servers and also to configure load balancing.
+
 <p><a href="https://hub.docker.com/r/abhijithababhijith/yuk">Docker hub</a></p>
 ### Why yuk ?
 
@@ -18,6 +19,9 @@ To configure proxy with less effort.
 - [Production Setup](#production-setup)
 - [Development Setup ](#development-setup)
 - [Upcoming Features](#upcoming-features)
+- [Screenshots](#screenshots)
+- [Links](#links)
+- [Author](#author)
 
 ### Features
  ONLY ON : [HTTP]
@@ -58,3 +62,14 @@ to the port 8080.
 - Access logs and error log
 - Health checks
 - Backup server
+
+### Screenshots
+
+<img src="https://raw.githubusercontent.com/abhisawesome/yuk/main/project-assets/0.1.0/screenshot/Screenshot%202021-06-14%20at%201.27.24%20AM.png"/>
+<img src="https://github.com/abhisawesome/yuk/blob/main/project-assets/0.1.0/screenshot/Screenshot%202021-06-14%20at%201.27.46%20AM.png?raw=true" />
+
+### Links
+<p><a href="https://hub.docker.com/r/abhijithababhijith/yuk">Docker image (Docker hub)</a></p>
+
+### Author
+<p><a href="https://github.com/abhisawesome/">Abhijith V</a></p>
