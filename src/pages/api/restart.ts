@@ -2,8 +2,18 @@ import { Request, Response } from "express"
 import { restartLoad } from '@/backend/proxy-settings';
 
 export default async (req: Request, res: Response) => {
-    const response = await restartLoad();
-    return res
-        .status(200)
-        .send(response);
+    try {
+        if (req.method !== 'POST') {
+            throw new Error('Invalid type');
+        }
+        const { token } = req.body;
+        const response = await restartLoad(token);
+        return res
+            .status(200)
+            .send(response)
+    } catch (error) {
+        return res
+            .status(500)
+            .send({ status: false, message: error.message || "Something went wrong !!" })
+    }
 }

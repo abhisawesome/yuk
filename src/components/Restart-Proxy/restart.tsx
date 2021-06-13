@@ -13,7 +13,14 @@ const RestartProxy = ({ isDevelopmentMode }: Props) => {
     const restartProxy = async () => {
         setRestarting(true);
         try {
-            const response = await fetch('/api/restart');
+            const response = await fetch('/api/restart', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ token: localStorage.getItem('token') || "" })
+            });
             const respJson = await response.json();
             setMessage(respJson.message);
         } catch (error) {
