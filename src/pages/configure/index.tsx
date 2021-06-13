@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import NavBar from '@/components/navbar';
+import ConfigureProxy from '@/components/configure';
 
 const Configure = () => {
     const router = useRouter();
@@ -17,6 +18,7 @@ const Configure = () => {
             <div className="flex items-center justify-center">
                 Configure Proxy
             </div>
+            <ConfigureProxy />
         </div>
     )
 }
