@@ -1,5 +1,3 @@
-import findOne from '@/mongo/findOne';
-import Mongo from '../mongo';
 import Token from '@/backend/helper/jwt';
 
 interface Params {
@@ -16,23 +14,8 @@ const login = async (params: Params) => {
             token = new Token(process.env.PRIVATE_KEY || 'default@privateKey')
                 .generateTokenWithExpiry({ email: params.email },50000)
             return Promise.resolve({ token })
-        }
-        const mongo = new Mongo();
-        const db = await mongo.connectDb();
-        const collection = db.collection('yuk_users');
-        const userDetail = await findOne(collection, { email: params.email, password: params.password });
-        mongo.closeConnection();
-        if (userDetail === null) {
-            return Promise.reject({ message: 'Invalid credentials' });
-        } else {
-            token = new Token(process.env.PRIVATE_KEY || 'default@privateKey')
-                .generateToken({
-                    name: userDetail.name,
-                    email: userDetail.email
-                })
-            return Promise.resolve({
-                token
-            })
+        }else{
+            return Promise.reject('Invalid user')
         }
     } catch (error) {
         return Promise.reject(error);
