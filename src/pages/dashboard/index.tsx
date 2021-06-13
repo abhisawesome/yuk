@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import NavBar from '@/components/navbar';
-import Cards from '@/components/Cards';
-import Status from '@/components/Status';
-import RestartProxy from '@/components/Restart-Proxy';
+import Cards from '@/components/cards';
+import Status from '@/components/status';
+import RestartProxy from '@/components/restart-proxy';
 
 const Dashboard = () => {
     const router = useRouter();
@@ -17,6 +17,9 @@ const Dashboard = () => {
     return (
         <div>
             <NavBar />
+            <div className="flex items-center justify-center">
+                Home
+            </div>
             <div className="flex flex-row space-x-10 m-8 ">
                 <Cards title="Server Status">
                     <Status isDevelopmentMode={isDevelopmentMode} />
