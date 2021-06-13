@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Root from '../components/Root';
+import Login from '../components/Login';
 
 const Home = () => {
   return (
@@ -9,7 +9,7 @@ const Home = () => {
         <meta name="description" content="Configure reverse proxy easily" />
       </Head>
       <main >
-          <Root />
+          <Login />
       </main>
     </div>
   );

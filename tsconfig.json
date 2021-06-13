@@ -28,6 +28,9 @@
       ],
       "@/backend/*": [
         "src/backend/*"
+      ],
+      "@/mongo/*": [
+        "src/backend/mongo/operation/*"
       ]
     }
   },

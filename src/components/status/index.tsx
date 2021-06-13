@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react'
 import Loading from '../Loading';
+import Retry from './retry';
 
-const Status = () => {
+interface Props {
+    isDevelopmentMode?: boolean | true
+}
+
+const Status = ({ isDevelopmentMode }: Props) => {
     const [isLoading, setLoading] = useState(false);
     const [statusMessage, setStatusMessage] = useState("");
+    const [retry, setRetry] = useState(false);
+
     const fetchData = async () => {
         setLoading(true);
         try {
@@ -20,20 +27,36 @@ const Status = () => {
         }
         setLoading(false);
     }
+    const retryTab = () => {
+        setRetry(!retry)
+    }
     useEffect(() => {
-        if (process.env.NODE_ENV === 'development') {
+        console.log('inn')
+        if (isDevelopmentMode) {
             setStatusMessage('Development mode');
         } else {
             fetchData();
         }
-    }, [])
+    }, [retry])
     if (isLoading) {
-        return <Loading />
+        return <Loading type="card" />
     }
     return (
-        <div>
-            <h1>Status</h1>
-            <p>{statusMessage}</p>
+        <div className="flex flex-col">
+            <div>
+                <button className="float-right" onClick={retryTab}>
+                    <div className="flex h-5 w-5 float-right" >
+                        <Retry />
+                    </div>
+                </button>
+                <span className="flex h-3 w-3 float-right">
+                    <span className="animate-ping  relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+                </span>
+
+            </div>
+            <div className="p-5 bg-gray-100">
+                <p>{statusMessage}</p>
+            </div>
         </div>
     )
 }
