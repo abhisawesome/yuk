@@ -4,6 +4,7 @@ import * as  styles from './styles.module.css';
 
 const Login = () => {
     const [isLoading, setLoading] = useState(false);
+    const [message, setMessage] = useState('');
     const [data, setData] = useState({});
     const router = useRouter()
 
@@ -28,9 +29,12 @@ const Login = () => {
             if (respJson.status && respJson.token) {
                 localStorage.setItem('token', respJson.token);
                 router.push('/dashboard');
+            } else {
+                setMessage('Failed to login')
             }
         } catch (error) {
             console.error(error);
+            setMessage('Failed to login')
         }
         setLoading(false);
     }
@@ -72,6 +76,13 @@ const Login = () => {
                     </button>
                 </form>
             </div>
+            {message && message.length !== 0 && (
+                <div className="flex mt-10 items-center justify-center">
+                    <span className="bg-gray-100">
+                        {message}
+                    </span>
+                </div>
+            )}
         </div>
     )
 }
