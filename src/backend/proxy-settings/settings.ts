@@ -16,7 +16,6 @@ const configure = async ({ hostData }: Input, location: String) => {
         await loadBalancer.makeConfig(config, location);
         return Promise.resolve({ status: true, message: 'Config file created' });
     } catch (error) {
-        console.log(error);
         return Promise.reject(error);
     }
 }
