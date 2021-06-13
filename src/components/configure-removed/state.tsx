@@ -2,8 +2,7 @@ interface State {
   isLoading: boolean,
   formElement: Array<Object>
   hostData: Object,
-  message: String,
-  requireServerRestart: boolean
+  message: String
 }
 interface Type {
   value?: any,
@@ -13,8 +12,7 @@ const initialState = {
   isLoading: false,
   formElement: [{ id: 0 }],
   hostData: {},
-  message: '',
-  requireServerRestart: false
+  message: ''
 };
 
 const reducer = (state: State, type: Type) => {
@@ -32,11 +30,7 @@ const reducer = (state: State, type: Type) => {
       return { ...state, isLoading: value }
     }
     case 'set_message': {
-      const { message, status } = value;
-      return { ...state, message: message, isLoading: false, requireServerRestart: status }
-    }
-    case 'set_server_restart': {
-      return { ...state, requireServerRestart: value }
+      return { ...state, message: value, isLoading: false }
     }
     default:
       return state;
