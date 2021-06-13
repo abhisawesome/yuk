@@ -1,6 +1,12 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router';
 
 const NavBar = () => {
+    const router = useRouter()
+    const logout = () => {
+        localStorage.removeItem('token');
+        router.push('/')
+    }
     return (
         <div className="bg-gray-400  dark:bg-gray-800 shadow-xl">
             <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6 ">
@@ -12,11 +18,19 @@ const NavBar = () => {
                         <Link
                             href="/dashboard"
                         >
-                            <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 mr-6 hover:bg-indigo-300">Home</a>
+                            <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 mr-6 hover:bg-indigo-300">
+                                Home
+                            </a>
                         </Link>
+                        <div className="flex float-right">
+                            <button onClick={logout}>
+                                <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 mr-6 hover:bg-indigo-300">
+                                    Logout
+                                </a>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                
             </nav>
         </div>
     )
