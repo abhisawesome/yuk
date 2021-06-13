@@ -1,7 +1,8 @@
 import shell from 'shelljs';
-
-const executeCommand = (command: string) => {
+import Token from '@/backend/helper/jwt';
+const executeCommand = (command: string,token:string) => {
     try {
+        new Token(process.env.PRIVATE_KEY || "").verifyToken(token);
         const response = shell.exec(command);
         if (response.stdout.length !== 0) {
             return Promise.resolve({ status: true, message: response.stdout, meta: response })
@@ -9,7 +10,7 @@ const executeCommand = (command: string) => {
             return Promise.resolve({ status: false, message: response.stderr, meta: response })
         }
     } catch (error) {
-        return Promise.resolve({ status: false, message: error.message || "Something went wrong !!" })
+        return Promise.reject({ status: false, message: error.message || "Something went wrong !!" })
     }
 }
 

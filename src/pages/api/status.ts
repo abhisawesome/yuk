@@ -3,7 +3,11 @@ import { checkStatus } from '@/backend/proxy-settings'
 
 export default async (req: Request, res: Response) => {
     try {
-        const response = await checkStatus();
+        if (req.method !== 'POST') {
+            throw new Error('Invalid type');
+        }
+        const { token } = req.body;
+        const response = await checkStatus(token);
         return res
             .status(200)
             .send(response)

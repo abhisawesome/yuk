@@ -16,7 +16,7 @@ class Token {
             const data = jwt.verify(token, this.privateKey);
             return data;
         } catch (error) {
-            return null;
+            throw new Error(error);
         }
     }
     // generate token with expiry time

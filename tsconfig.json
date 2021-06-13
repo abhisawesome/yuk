@@ -31,6 +31,9 @@
       ],
       "@/mongo/*": [
         "src/backend/mongo/operation/*"
+      ],
+      "@/config/*":[
+        "src/config/*"
       ]
     }
   },
