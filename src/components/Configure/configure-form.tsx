@@ -35,6 +35,7 @@ const ConfigureForm = ({ id, onChange = () => { } }: Props) => {
                 <input
                     required
                     type="text"
+                    autoComplete="off"
                     id="host"
                     onChange={handleChanges}
                     value={value.host}
