@@ -5,8 +5,7 @@ import ConfigureProxy from '@/components/configure';
 
 const Configure = () => {
     const router = useRouter();
-    const isDevelopmentMode = process.env.NODE_ENV === 'development';
-
+    
     useEffect(() => {
         if (localStorage && localStorage.getItem('token') === null) {
             router.push('/');

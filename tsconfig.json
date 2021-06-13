@@ -32,8 +32,8 @@
       "@/mongo/*": [
         "src/backend/mongo/operation/*"
       ],
-      "@/config/*":[
-        "src/config/*"
+      "@/constants/*":[
+        "src/constants/*"
       ]
     }
   },

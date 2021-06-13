@@ -4,10 +4,11 @@ import NavBar from '@/components/navbar';
 import Cards from '@/components/cards';
 import Status from '@/components/status';
 import RestartProxy from '@/components/restart-proxy';
+import { IS_DEVELOPING } from '@/constants/index';
 
 const Dashboard = () => {
     const router = useRouter();
-    const isDevelopmentMode = process.env.NODE_ENV === 'development';
+    const isDevelopmentMode = IS_DEVELOPING;
 
     useEffect(() => {
         if (localStorage && localStorage.getItem('token') === null) {
