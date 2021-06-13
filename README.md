@@ -12,25 +12,23 @@ To configure proxy with less effort.
 - SSL termination.
 - Security and anonymity.
 
-## To Run
-
-### Prerequisite
-
-1. Docker and docker-compose pre installed in the system
-
 ## <i>Table of contents</i>
 
 - [Features](#features)
-- [Run in production](#demo)
+- [Production Setup](#production-setup)
+- [Development Setup ](#development-setup)
+- [Upcoming Features](#upcoming-features)
 
 ### Features
-
+ ONLY ON : [HTTP]
 1. Proxy
 2. Load balancing
 
-### Production setup
+### Production Setup
+#### Prerequisite
 
-
+- Docker pre installed in the system
+#### script
 ```
    docker run -d \
       -p 8080:8080 \
@@ -41,4 +39,22 @@ To configure proxy with less effort.
    ```
 Run the above command, to run the docker container. Port 3001 is for the dashboard and the request to proxy server is mapped
 to the port 8080.
+### Development Setup
+#### Prerequisite
 
+- node, docker,docker-compose
+
+#### script
+1. Run ```npm i ``` on root folder
+2. Run ```npm run dev``` , localhost:3000 serves the dashboard.
+3. Run on docker ```docker-compose up -d```
+
+
+
+### Upcoming Features
+
+- HTTPS module
+- UPD and TCP
+- Access logs and error log
+- Health checks
+- Backup server
