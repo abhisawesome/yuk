@@ -49,6 +49,7 @@ const Login = () => {
                     <input
                         disabled={isLoading}
                         required
+                        autoComplete="off"
                         className={styles.input}
                         type="email"
                         id="email"
