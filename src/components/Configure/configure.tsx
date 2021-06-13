@@ -50,7 +50,7 @@ const Configure = () => {
     };
     return (
         <div className="grid">
-            <form>
+            <form autoComplete="off">
                 {GenerateElement({ value: formElement, onChange: onChangeFormElementData })}
                 <div
                     className="flex mt-10 items-center justify-center"
