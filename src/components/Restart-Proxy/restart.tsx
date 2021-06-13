@@ -15,7 +15,6 @@ const RestartProxy = ({ isDevelopmentMode }: Props) => {
         try {
             const response = await fetch('/api/restart');
             const respJson = await response.json();
-            console.log(respJson);
             setMessage(respJson.message);
         } catch (error) {
             setMessage(error.message || "")

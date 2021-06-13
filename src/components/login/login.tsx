@@ -33,7 +33,6 @@ const Login = () => {
                 setMessage('Failed to login')
             }
         } catch (error) {
-            console.error(error);
             setMessage('Failed to login')
         }
         setLoading(false);
