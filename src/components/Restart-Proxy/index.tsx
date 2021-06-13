@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Retry from './retry';
-import Loading from '@/components/Loading';
+import Loading from '@/components/loading';
 
 interface Props {
     isDevelopmentMode?: boolean | true

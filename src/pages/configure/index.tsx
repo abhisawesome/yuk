@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import NavBar from '@/components/Navbar';
+import NavBar from '@/components/navbar';
 
 const Configure = () => {
     const router = useRouter();

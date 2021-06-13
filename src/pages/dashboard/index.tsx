@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import NavBar from '@/components/Navbar';
-import Cards from '@/components/Cards';
-import Status from '@/components/Status';
-import RestartProxy from '@/components/Restart-Proxy';
+import NavBar from '@/components/navbar';
+import Cards from '@/components/cards';
+import Status from '@/components/status';
+import RestartProxy from '@/components/restart-proxy';
 
 const Dashboard = () => {
     const router = useRouter();
