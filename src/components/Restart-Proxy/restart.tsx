@@ -8,7 +8,7 @@ interface Props {
 
 const RestartProxy = ({ isDevelopmentMode }: Props) => {
     const [isRestarting, setRestarting] = useState(false);
-    const [message, setMessage] = useState(undefined);
+    const [message, setMessage] = useState("");
 
     const restartProxy = async () => {
         setRestarting(true);
@@ -39,9 +39,11 @@ const RestartProxy = ({ isDevelopmentMode }: Props) => {
                     <Retry />
                 </button>
             </div>
-            <p className="p-5 bg-gray-100">
-                {message}
-            </p>
+            {message && message.length !== 0 && (
+                <p className="p-5 bg-gray-100">
+                    {message}
+                </p>
+            )}
         </div>
     )
 }

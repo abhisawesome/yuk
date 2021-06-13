@@ -31,7 +31,6 @@ const Status = ({ isDevelopmentMode }: Props) => {
         setRetry(!retry)
     }
     useEffect(() => {
-        console.log('inn')
         if (isDevelopmentMode) {
             setStatusMessage('Development mode');
         } else {
@@ -54,9 +53,11 @@ const Status = ({ isDevelopmentMode }: Props) => {
                 </span>
 
             </div>
-            <div className="p-5 bg-gray-100">
-                <p>{statusMessage}</p>
-            </div>
+            {statusMessage && statusMessage.length !== 0 && (
+                <div className="p-5 bg-gray-100">
+                    <p>{statusMessage}</p>
+                </div>
+            )}
         </div>
     )
 }
