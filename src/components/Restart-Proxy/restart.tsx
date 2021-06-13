@@ -19,7 +19,7 @@ const RestartProxy = ({ isDevelopmentMode }: Props) => {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ token: localStorage.getItem('token') || "" })
+                body: JSON.stringify({ token: localStorage.getItem('token') })
             });
             const respJson = await response.json();
             setMessage(respJson.message);
