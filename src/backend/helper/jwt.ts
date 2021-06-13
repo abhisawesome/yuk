@@ -19,8 +19,8 @@ class Token {
             throw new Error(error);
         }
     }
-    // generate token with expiry time
-    generateTokenWithExpiry(data: any, expireTime: number) {
+    // generate token with expiry time in milli-second
+    generateTokenWithExpiry(data: any, expireTime: string) {
         const token = jwt.sign(data, this.privateKey, { expiresIn: expireTime });
         return token;
     }

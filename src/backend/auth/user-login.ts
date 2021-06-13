@@ -12,7 +12,7 @@ const login = async (params: Params) => {
         let token;
         if (defaultUser === params.email && defaultPassword === params.password) {
             token = new Token(PRIVATE_KEY)
-                .generateTokenWithExpiry({ email: params.email }, 50000)
+                .generateTokenWithExpiry({ email: params.email }, "3600000")
             return Promise.resolve({ token })
         } else {
             return Promise.reject('Invalid user')

@@ -2,7 +2,6 @@ import { useReducer } from 'react';
 import { initialState, reducer } from './state';
 import GenerateElement from './generate-form';
 import Loading from '@/components/loading';
-import RestartProxy from '@/components/restart-proxy';
 
 const Configure = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
@@ -27,7 +26,7 @@ const Configure = () => {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ hostData: Object.values(hostData) })
+                    body: JSON.stringify({ token: localStorage.getItem('token'),hostData: Object.values(hostData) })
                 });
             const respJson = await response.json();
             if (respJson.status) {
@@ -37,11 +36,13 @@ const Configure = () => {
                         status: true
                     }
                 })
+            }else{
+                throw new Error('Config file not created')
             }
         } catch (error) {
             dispatch({
                 action: 'set_message', value: {
-                    message: 'Something went wrong',
+                    message: error.message || 'Something went wrong',
                     status: false
                 }
             })
@@ -81,12 +82,12 @@ const Configure = () => {
             </form>
             {requireServerRestart && (
                 <div className="flex mt-10 items-center justify-center">
-                    <span className="bg-gray-300">Restart the server from yuk dashboard home</span>
+                    <span className="bg-gray-100">Restart the server from yuk dashboard home</span>
                 </div>
             )}
             {message && message.length !== 0 && (
                 <div className="flex mt-10 items-center justify-center">
-                    <span className="bg-gray-300">{message}</span>
+                    <span className="bg-gray-100">{message}</span>
                 </div>
             )}
             {/* <div>
