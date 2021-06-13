@@ -7,7 +7,7 @@ interface Props {
 }
 const Cards = ({ title, children }: Props) => {
     return (
-        <div className="max-w-sm rounded overflow-hidden  shadow-lg  flex md:flex-1 h-auto  hover:bg-indigo-300">
+        <div className="max-w-sm rounded overflow-hidden  shadow-lg  h-auto  hover:bg-indigo-300">
             <div className="px-10 py-10 h-full">
                 <div className="font-bold text-xl mb-2">{title}</div>
                 <p className="text-gray-700 text-base">

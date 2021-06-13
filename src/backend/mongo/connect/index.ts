@@ -8,8 +8,8 @@ class Mongo {
     url: string
     dbName: string
     constructor() {
-        this.dbName = process.env.DB_NAME || ''
-        this.url = process.env.MONGO_URL || 'yuk'
+        this.dbName = process.env.DB_NAME || 'yuk'
+        this.url = process.env.MONGO_URL || ''
         this.connect = new MongoClient(this.url);
     }
     async connectDb(): Promise<Db> {

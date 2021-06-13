@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import NavBar from '@/components/navbar';
 import Cards from '@/components/Cards';
 import Status from '@/components/Status';
+import Loading from '@/components/Loading';
 const Dashboard = () => {
     const router = useRouter()
     useEffect(() => {
@@ -14,7 +15,7 @@ const Dashboard = () => {
         <div>
             <NavBar />
             <div className="flex flex-row space-x-10 m-8 ">
-                <Cards title="Status">
+                <Cards title="Server Status">
                     <Status />
                 </Cards>
             </div>
