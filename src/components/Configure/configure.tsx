@@ -2,11 +2,11 @@ import { useReducer } from 'react';
 import { initialState, reducer } from './state';
 import GenerateElement from './generate-form';
 import Loading from '@/components/loading';
-
+import RestartProxy from '@/components/restart-proxy';
 
 const Configure = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
-    const { formElement = [], hostData, isLoading, message } = state;
+    const { formElement = [], hostData, isLoading, message, requireServerRestart } = state;
     // Add new form element
     const addNewHost = () => {
         dispatch({ action: 'add_new_host' });
@@ -31,10 +31,20 @@ const Configure = () => {
                 });
             const respJson = await response.json();
             if (respJson.status) {
-                dispatch({ action: 'set_message', value: 'Config file created. Restart the nginx container' })
+                dispatch({
+                    action: 'set_message', value: {
+                        message: 'Config file created',
+                        status: true
+                    }
+                })
             }
         } catch (error) {
-            dispatch({ action: 'set_message', value: 'Something went wrong' })
+            dispatch({
+                action: 'set_message', value: {
+                    message: 'Something went wrong',
+                    status: false
+                }
+            })
         }
     };
     return (
@@ -69,17 +79,22 @@ const Configure = () => {
                     </button>
                 </div>
             </form>
-            <div className="flex mt-10 items-center justify-center">
-
-            </div>
-            <div>
+            {requireServerRestart && (
+                <div className="flex mt-10 items-center justify-center">
+                    <span className="bg-gray-300">Restart the server from yuk dashboard home</span>
+                </div>
+            )}
+            {message && message.length !== 0 && (
+                <div className="flex mt-10 items-center justify-center">
+                    <span className="bg-gray-300">{message}</span>
+                </div>
+            )}
+            {/* <div>
                 <div className="grid-cols-2">
                     Host data: {JSON.stringify(hostData)}
                 </div>
-                <div>
-                    Message: {JSON.stringify(message)}
-                </div>
-            </div>
+                
+            </div> */}
         </div>
 
     )
