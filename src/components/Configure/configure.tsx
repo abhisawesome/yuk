@@ -37,9 +37,6 @@ const Configure = () => {
             dispatch({ action: 'set_message', value: 'Something went wrong' })
         }
     };
-    if (isLoading) {
-        return (<Loading />)
-    }
     return (
         <div className="grid">
             <form>
@@ -49,6 +46,7 @@ const Configure = () => {
                 >
                     <div className="row-span-1">
                         <button
+                            disabled={isLoading}
                             type="button"
                             className="ml-3 box-content  w-72 p-4 border-4 rounded-full "
                             onClick={() => { addNewHost(); }}
@@ -58,11 +56,16 @@ const Configure = () => {
                     </div>
 
                     <button
+                        disabled={isLoading}
                         type="submit"
                         className="ml-3 box-content  w-72 p-4 border-4 rounded-full "
                         onClick={formSubmit}
                     >
-                        Create Config
+                        {!isLoading ? 'Create config' : (
+                            <div className="flex items-center justify-center">
+                                <Loading />
+                            </div>
+                        )}
                     </button>
                 </div>
             </form>
