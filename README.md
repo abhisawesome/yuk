@@ -1,7 +1,6 @@
 # yuk
 
 Yuk is a open source tool to create reverse proxy servers and also to configure load balancing.
-
 <p><a href="https://hub.docker.com/r/abhijithababhijith/yuk">Docker hub</a></p>
 ### Why yuk ?
 
@@ -33,6 +32,7 @@ To configure proxy with less effort.
 
 - Docker pre installed in the system
 #### script
+
 ```
    docker run -d \
       -p 8080:8080 \
@@ -43,6 +43,7 @@ To configure proxy with less effort.
    ```
 Run the above command, to run the docker container. Port 3001 is for the dashboard and the request to proxy server is mapped
 to the port 8080.
+
 ### Development Setup
 #### Prerequisite
 
@@ -73,3 +74,4 @@ to the port 8080.
 
 ### Author
 <p><a href="https://github.com/abhisawesome/">Abhijith V</a></p>
+
