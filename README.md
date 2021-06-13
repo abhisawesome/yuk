@@ -2,7 +2,8 @@
 
 Yuk is a open source tool to create reverse proxy servers and also to configure load balancing.
 <p><a href="https://hub.docker.com/r/abhijithababhijith/yuk">Docker hub</a></p>
-### Why yuk ?
+
+## Why yuk ?
 
 To configure proxy with less effort.
 
