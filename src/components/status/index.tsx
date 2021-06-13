@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react'
 import Loading from '../Loading';
 import Retry from './retry';
 
-const Status = (props: any) => {
-    console.log(props);
+interface Props {
+    isDevelopmentMode?: boolean | true
+}
+
+const Status = ({ isDevelopmentMode }: Props) => {
     const [isLoading, setLoading] = useState(false);
     const [statusMessage, setStatusMessage] = useState("");
     const [retry, setRetry] = useState(false);
@@ -29,13 +32,8 @@ const Status = (props: any) => {
     }
     useEffect(() => {
         console.log('inn')
-        if (process.env.NODE_ENV === 'development') {
-            setLoading(true)
-            setTimeout(() => {
-                setStatusMessage('Development mode');
-                setLoading(false);
-            }, 5000)
-
+        if (isDevelopmentMode) {
+            setStatusMessage('Development mode');
         } else {
             fetchData();
         }
@@ -56,7 +54,7 @@ const Status = (props: any) => {
                 </span>
 
             </div>
-            <div className="my-3">
+            <div className="p-5 bg-gray-100">
                 <p>{statusMessage}</p>
             </div>
         </div>
