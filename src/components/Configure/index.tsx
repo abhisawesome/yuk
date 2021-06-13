@@ -1,3 +1,3 @@
-import Configure from './configure-form';
+import Configure from './configure';
 
 export default Configure
