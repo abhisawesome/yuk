@@ -1,9 +1,3 @@
+import { checkStatus, restartLoad } from './service'
 
-import { executeCommand } from './execute-command';
-
-// check nginx status
-const checkStatus = () => executeCommand('service nginx status')
-// restart nginx
-const restartLoad = () => executeCommand('service nginx restart')
-
-export { checkStatus,restartLoad }
+export { checkStatus, restartLoad }
