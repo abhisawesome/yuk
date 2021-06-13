@@ -1,5 +1,5 @@
 import { Response, Request } from "express"
-import { checkStatus } from '../../backend'
+import { checkStatus } from '@/backend/proxy-settings'
 
 export default async (req: Request, res: Response) => {
     try {

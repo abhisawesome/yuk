@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { configure } from '../../backend'
+import { configure } from '@/backend/proxy-settings'
 
 export default async (req: Request, res: Response) => {
     const { hostData } = req.body

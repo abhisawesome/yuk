@@ -1,4 +1,4 @@
-# yuk
+# yuk [STILL IN DEVELOPMENT MODE]
 
 Yuk is tool to create reverse proxy servers and also to configure load balancing.
 
