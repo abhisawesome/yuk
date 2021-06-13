@@ -14,7 +14,14 @@ const Status = ({ isDevelopmentMode }: Props) => {
     const fetchData = async () => {
         setLoading(true);
         try {
-            const response = await fetch('/api/status');
+            const response = await fetch('/api/status', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ token: localStorage.getItem('token') || "" })
+            });
             const respJson = await response.json();
             if (respJson.status) {
                 setStatusMessage('Success :' + respJson.message);
