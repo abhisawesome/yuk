@@ -64,6 +64,10 @@ to the port 8080.
 - Access logs and error log
 - Health checks
 - Backup server
+- Load balancing method
+- server slow start
+- max connections
+- 
 
 ### Screenshots
 
